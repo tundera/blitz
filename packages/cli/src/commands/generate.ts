@@ -5,7 +5,7 @@ import * as path from "path"
 import enquirer from "enquirer"
 import _pluralize from "pluralize"
 import {
-  PageGenerator,
+  PagesGenerator,
   MutationGenerator,
   QueriesGenerator,
   FormGenerator,
@@ -69,7 +69,7 @@ function ModelNames(input: string = "") {
 const generatorMap = {
   [ResourceType.All]: [
     ModelGenerator,
-    PageGenerator,
+    PagesGenerator,
     FormGenerator,
     QueriesGenerator,
     MutationGenerator,
@@ -77,7 +77,7 @@ const generatorMap = {
   [ResourceType.Crud]: [MutationGenerator, QueriesGenerator],
   [ResourceType.Model]: [ModelGenerator],
   [ResourceType.Mutations]: [MutationGenerator],
-  [ResourceType.Pages]: [PageGenerator, FormGenerator],
+  [ResourceType.Pages]: [PagesGenerator, FormGenerator],
   [ResourceType.Queries]: [QueriesGenerator],
   [ResourceType.Query]: [QueryGenerator],
   [ResourceType.Resource]: [ModelGenerator, QueriesGenerator, MutationGenerator],

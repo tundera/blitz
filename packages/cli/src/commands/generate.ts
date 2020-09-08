@@ -33,6 +33,7 @@ const isTypescript = fs.existsSync(path.join(projectRoot, "tsconfig.json"))
 enum ResourceType {
   All = "all",
   Crud = "crud",
+  Form = "form",
   Model = "model",
   Mutation = "mutation",
   Mutations = "mutations",
@@ -125,9 +126,10 @@ const generatorMap = {
     PagesGenerator,
     FormGenerator,
     QueriesGenerator,
-    MutationGenerator,
+    MutationsGenerator,
   ],
-  [ResourceType.Crud]: [MutationGenerator, QueriesGenerator],
+  [ResourceType.Crud]: [MutationsGenerator, QueriesGenerator],
+  [ResourceType.Form]: [FormGenerator],
   [ResourceType.Model]: [ModelGenerator],
   [ResourceType.Mutation]: [MutationGenerator],
   [ResourceType.Mutations]: [MutationsGenerator],
@@ -135,7 +137,7 @@ const generatorMap = {
   [ResourceType.Pages]: [PagesGenerator, FormGenerator],
   [ResourceType.Queries]: [QueriesGenerator],
   [ResourceType.Query]: [QueryGenerator],
-  [ResourceType.Resource]: [ModelGenerator, QueriesGenerator, MutationGenerator],
+  [ResourceType.Resource]: [ModelGenerator, QueriesGenerator, MutationsGenerator],
   [ResourceType.Template]: [TemplateGenerator],
 }
 

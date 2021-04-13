@@ -2381,6 +2381,42 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "jahredhope",
+      "name": "Jahred Hope",
+      "avatar_url": "https://avatars.githubusercontent.com/u/13903378?v=4",
+      "profile": "jahred.com.au",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "simonelnahas",
+      "name": "Simon El Nahas",
+      "avatar_url": "https://avatars.githubusercontent.com/u/29279201?v=4",
+      "profile": "simonelnahas.github.io/",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "Cristy94",
+      "name": "Buleandra Cristian",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1384885?v=4",
+      "profile": "www.usertrack.net",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "peterpalau",
+      "name": "Pedro Enrique Palau Isaac",
+      "avatar_url": "https://avatars.githubusercontent.com/u/12257885?v=4",
+      "profile": "http://palauisaac.me/",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,

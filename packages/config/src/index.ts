@@ -1,4 +1,5 @@
 import * as esbuild from "esbuild"
+import fs from "fs"
 import {existsSync, readJSONSync} from "fs-extra"
 import path, {join} from "path"
 import pkgDir from "pkg-dir"
@@ -27,12 +28,23 @@ interface BuildConfigOptions {
 
 export async function buildConfig({watch}: BuildConfigOptions = {}) {
   debug("Starting buildConfig...")
-  const pkg = readJSONSync(path.join(pkgDir.sync()!, "package.json"))
-  debug("src", getConfigSrcPath())
-  debug("build", getConfigBuildPath())
+  const dir = pkgDir.sync()
+  if (!dir) {
+    // This will happen when running blitz no inside a blitz app
+    debug("Unable to find package directory")
+    return
+  }
+  const pkg = readJSONSync(path.join(dir, "package.json"))
+  const srcPath = getConfigSrcPath()
+
+  if (fs.readFileSync(srcPath, "utf8").includes("tsconfig-paths/register")) {
+    // User is manually handling their own typescript stuff
+    debug("Config contains 'tsconfig-paths/register', so skipping build")
+    return
+  }
 
   const esbuildOptions: esbuild.BuildOptions = {
-    entryPoints: [getConfigSrcPath()],
+    entryPoints: [srcPath],
     outfile: getConfigBuildPath(),
     format: "cjs",
     bundle: true,
@@ -68,7 +80,7 @@ export interface BlitzConfig extends Record<string, unknown> {
   target?: string
   experimental?: {
     isomorphicResolverImports?: boolean
-    reactMode?: string
+    reactRoot?: boolean
   }
   cli?: {
     clearConsoleOnBlitzDev?: boolean
